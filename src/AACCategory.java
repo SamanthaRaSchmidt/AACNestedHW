@@ -4,12 +4,12 @@ import java.util.NoSuchElementException;
  * Represents the mappings for a single category of items that should
  * be displayed
  * 
- * @author Catie Baker & YOUR NAME HERE
+ * @author Catie Baker & Sam Schmidt
  *
  */
 public class AACCategory implements AACPage {
 
-	
+
 	/**
 	 * Creates a new empty category with the given name
 	 * @param name the name of the category
