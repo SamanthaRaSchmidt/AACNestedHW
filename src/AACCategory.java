@@ -9,7 +9,7 @@ import java.util.NoSuchElementException;
  */
 public class AACCategory implements AACPage {
 
-
+	
 	/**
 	 * Creates a new empty category with the given name
 	 * @param name the name of the category
