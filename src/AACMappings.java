@@ -33,7 +33,7 @@ public class AACMappings implements AACPage {
 	 */
 	public AACMappings(String filename) {
 
-	}
+	} //AACMappings(String)
 	
 	/**
 	 * Given the image location selected, it determines the action to be
@@ -51,7 +51,7 @@ public class AACMappings implements AACPage {
 	 */
 	public String select(String imageLoc) {
 		return null;
-	}
+	} //select(String)
 	
 	/**
 	 * Provides an array of all the images in the current category
@@ -60,7 +60,7 @@ public class AACMappings implements AACPage {
 	 */
 	public String[] getImageLocs() {
 		return null;
-	}
+	} //getImageLocs()
 	
 	/**
 	 * Resets the current category of the AAC back to the default
@@ -68,7 +68,7 @@ public class AACMappings implements AACPage {
 	 */
 	public void reset() {
 
-	}
+	} //reset()
 	
 	
 	/**

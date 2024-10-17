@@ -463,4 +463,4 @@ public class TestAACMappings {
     assertEquals(4, mappings.getImageLocs().length, "4 toppings");
     assertEquals("pepperoni", mappings.select("p"), "selecting topping p");
   } // testAdd()
-} // class TestAACCategory
+} // class TestAACMappings
