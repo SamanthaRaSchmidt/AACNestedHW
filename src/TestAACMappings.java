@@ -5,6 +5,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.Test;
+
+import edu.grinnell.csc207.util.KeyNotFoundException;
+import edu.grinnell.csc207.util.NullKeyException;
+
 import org.junit.jupiter.api.BeforeAll;
 
 import java.nio.file.Files;
@@ -109,9 +113,10 @@ public class TestAACMappings {
    *
    * @throws IOException
    *   If an IO operation fails.
+   * @throws NullKeyException 
    */
   @Test
-  public void testCreateEmpty() throws IOException {
+  public void testCreateEmpty() throws IOException, NullKeyException {
     String fName = configFile("\n");
     AACMappings mappings = new AACMappings(fName);
     assertNotNull(mappings);
@@ -123,9 +128,10 @@ public class TestAACMappings {
    *
    * @throws IOException
    *   If an IO operation fails.
+   * @throws NullKeyException 
    */
   @Test
-  public void testCreateTopLevel() throws IOException {
+  public void testCreateTopLevel() throws IOException, NullKeyException {
     String fName = configFile("one one\ntwo two\nthree three\n");
     AACMappings mappings = new AACMappings(fName);
     assertNotNull(mappings);
@@ -137,9 +143,10 @@ public class TestAACMappings {
    *
    * @throws IOException
    *   If an IO operation fails.
+   * @throws NullKeyException 
    */
   @Test 
-  public void testCreateNormal() throws IOException {
+  public void testCreateNormal() throws IOException, NullKeyException {
     String fName = configFile(TEST_CONFIG);
     AACMappings mappings = new AACMappings(fName);
     assertNotNull(mappings);
@@ -150,9 +157,10 @@ public class TestAACMappings {
    *
    * @throws IOException
    *   If an IO operation fails.
+   * @throws NullKeyException 
    */
   @Test
-  public void testTopLevelCategory() throws IOException {
+  public void testTopLevelCategory() throws IOException, NullKeyException {
     AACMappings mappings;
 
     mappings = new AACMappings(configFile(""));
@@ -173,9 +181,11 @@ public class TestAACMappings {
    *
    * @throws IOException
    *   If an IO operation fails.
+   * @throws NullKeyException 
+   * @throws KeyNotFoundException 
    */
   @Test
-  public void testGetCategoryA() throws IOException {
+  public void testGetCategoryA() throws IOException, NullKeyException, KeyNotFoundException {
     AACMappings mappings = 
         new AACMappings(configFile("one uno\ntwo dos\nthree tres"));
     assertEquals("", mappings.select("one"), "selecting one");
@@ -196,9 +206,11 @@ public class TestAACMappings {
    *
    * @throws IOException
    *   If an IO operation fails.
+   * @throws NullKeyException 
+   * @throws KeyNotFoundException 
    */
   @Test
-  public void testGetCategoryB() throws IOException {
+  public void testGetCategoryB() throws IOException, NullKeyException, KeyNotFoundException {
     AACMappings mappings = new AACMappings(configFile(TEST_CONFIG));
     assertEquals("", mappings.select("one"), "selecting one");
     assertEquals("fruit", mappings.getCategory(), "selected one");
@@ -218,9 +230,10 @@ public class TestAACMappings {
    *
    * @throws IOException
    *   If an IO operation fails.
+   * @throws NullKeyException 
    */
   @Test
-  public void testImageLocsEmpty() throws IOException {
+  public void testImageLocsEmpty() throws IOException, NullKeyException {
     AACMappings mappings = new AACMappings(configFile(""));
     assertArrayEquals(new String[] {}, mappings.getImageLocs(),
         "Top-level locations, no categories");
@@ -232,9 +245,11 @@ public class TestAACMappings {
    *
    * @throws IOException
    *   If an IO operation fails.
+   * @throws NullKeyException 
+   * @throws KeyNotFoundException 
    */
   @Test
-  public void testImageLocsTopLevel() throws IOException {
+  public void testImageLocsTopLevel() throws IOException, NullKeyException, KeyNotFoundException {
     AACMappings mappings = 
         new AACMappings(configFile("uno one\ndos two\ntres three\n"));
 
@@ -278,9 +293,11 @@ public class TestAACMappings {
    *
    * @throws IOException
    *   If an IO operation fails.
+   * @throws NullKeyException 
+   * @throws KeyNotFoundException 
    */
   @Test
-  public void testImageLocsNested() throws IOException {
+  public void testImageLocsNested() throws IOException, NullKeyException, KeyNotFoundException {
     AACMappings mappings = new AACMappings(configFile(TEST_CONFIG));
 
     String[] images = mappings.getImageLocs();
@@ -325,9 +342,11 @@ public class TestAACMappings {
    * 
    * @throws IOException
    *   If an IO operation fails.
+   * @throws NullKeyException 
+   * @throws KeyNotFoundException 
    */
   @Test
-  public void testSelectStandard() throws IOException {
+  public void testSelectStandard() throws IOException, NullKeyException, KeyNotFoundException {
     AACMappings mappings = new AACMappings(configFile(TEST_CONFIG));
 
     assertEquals("", mappings.select("one"), "one is a category");
@@ -354,9 +373,11 @@ public class TestAACMappings {
    * 
    * @throws IOException
    *   If an IO operation fails.
+   * @throws NullKeyException 
+   * @throws KeyNotFoundException 
    */
   @Test
-  public void testSelectExceptional() throws IOException {
+  public void testSelectExceptional() throws IOException, NullKeyException, KeyNotFoundException {
     AACMappings mappings = new AACMappings(configFile(""));
     String str;
 
@@ -422,9 +443,11 @@ public class TestAACMappings {
    *
    * @throws IOException
    *   If an IO operation fails.
+   * @throws NullKeyException 
+   * @throws KeyNotFoundException 
    */
   @Test
-  public void testAdd() throws IOException {
+  public void testAdd() throws IOException, NullKeyException, KeyNotFoundException {
     AACMappings mappings = new AACMappings(configFile(""));
 
     mappings.addItem("p", "pizza toppings");

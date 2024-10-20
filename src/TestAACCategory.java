@@ -7,6 +7,9 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.Test;
 
+import edu.grinnell.csc207.util.KeyNotFoundException;
+import edu.grinnell.csc207.util.NullKeyException;
+
 /**
  * Tests of AACCategory.
  *
@@ -48,9 +51,11 @@ public class TestAACCategory {
    * Tests of adding/selecting items. Since the specs don't indicate
    * what happens if we call addItem multiple times with the same key,
    * we don't check that issue.
+   * @throws NullKeyException 
+   * @throws KeyNotFoundException 
    */
   @Test
-  void testAddSelect() {
+  void testAddSelect() throws NullKeyException, KeyNotFoundException {
     AACCategory category = new AACCategory("testAddSelect");
     category.addItem("imageA", "Apple");
     category.addItem("imageB", "Banana");
@@ -62,9 +67,10 @@ public class TestAACCategory {
 
   /**
    * Tests of select in which the image is not there.
+   * @throws NullKeyException 
    */
   @Test
-  void testSelectMissing() {
+  void testSelectMissing() throws NullKeyException {
     AACCategory category = new AACCategory("testSelectMissing");
 
     // Nothing should be in the empty category.
@@ -95,8 +101,9 @@ public class TestAACCategory {
 
   /**
    * Tests of hasImage.
+   * @throws NullKeyException 
    */
-  void testHasImage() {
+  void testHasImage() throws NullKeyException {
     AACCategory category = new AACCategory("testHasImage");
 
     assertFalse(category.hasImage("imageA"), 
@@ -129,9 +136,10 @@ public class TestAACCategory {
 
   /**
    * Test of getImageLocs.
+   * @throws NullKeyException 
    */
   @Test
-  void testImageLocs() {
+  void testImageLocs() throws NullKeyException {
     AACCategory category = new AACCategory("testImageLocs");
 
     assertArrayEquals(new String[] {}, category.getImageLocs(),

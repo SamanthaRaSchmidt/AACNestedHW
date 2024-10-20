@@ -52,8 +52,8 @@ public class AACCategory implements AACPage {
 		String[] imageLocsArr = new String[generalArrayLength];
 
 		for (int i = 0; i < generalArrayLength; i++) {
-			String locs = arr[i].key;
-			imageLocsArr[i] = ;
+			String locs = arr.getKey(i);
+			imageLocsArr[i] = locs;
 		} // end for
 
 		return imageLocsArr;

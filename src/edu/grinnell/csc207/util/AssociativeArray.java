@@ -194,6 +194,16 @@ public class AssociativeArray<K, V> {
     return this.size;
   } // size()
 
+  /**
+   * Will return the key associated with the index.
+   * @param i the index to find the key of
+   * @return a String version of the key
+   */
+  public String getKey(int i) {
+    String theKey = pairs[i].key.toString();
+    return theKey;
+  } // getKey(int)
+
   // +-----------------+---------------------------------------------
   // | Private Methods |
   // +-----------------+
